@@ -1,0 +1,124 @@
+{
+  "questions": [
+    {
+      "question": "What is the correct way to declare a variable in JavaScript?",
+      "options": {
+        "option_a": "var x = 10;",
+        "option_b": "int x = 10;",
+        "option_c": "let x = 10;",
+        "option_d": "const x = 10;"
+      },
+      "correctOption": "option_a",
+      "correctPoint": "5",
+      "negativePoint": "0"
+    },
+    {
+      "question": "Which built-in method can be used to convert a string to all uppercase?",
+      "options": {
+        "option_a": "toUpperCase()",
+        "option_b": "toUppercase()",
+        "option_c": "toUpperCaseCase()",
+        "option_d": "upperCase()"
+      },
+      "correctOption": "option_a",
+      "correctPoint": "5",
+      "negativePoint": "0"
+    },
+    {
+      "question": "What does the '=== ' operator do in JavaScript?",
+      "options": {
+        "option_a": "Checks for strict equality, both in value and type.",
+        "option_b": "Checks for loose equality, both in value and type.",
+        "option_c": "Assigns a value to a variable.",
+        "option_d": "Declares a new variable."
+      },
+      "correctOption": "option_a",
+      "correctPoint": "5",
+      "negativePoint": "0"
+    },
+    {
+      "question": "Which function is used to add an element to the end of an array?",
+      "options": {
+        "option_a": "push()",
+        "option_b": "pop()",
+        "option_c": "shift()",
+        "option_d": "unshift()"
+      },
+      "correctOption": "option_a",
+      "correctPoint": "5",
+      "negativePoint": "0"
+    },
+    {
+      "question": "What is the purpose of the 'splice()' method in JavaScript?",
+      "options": {
+        "option_a": "To add or remove elements from an array.",
+        "option_b": "To sort an array.",
+        "option_c": "To concatenate two arrays.",
+        "option_d": "To reverse an array."
+      },
+      "correctOption": "option_a",
+      "correctPoint": "5",
+      "negativePoint": "0"
+    },
+    {
+      "question": "What does the 'let' keyword do in JavaScript?",
+      "options": {
+        "option_a": "Declares a block-scoped variable.",
+        "option_b": "Declares a global variable.",
+        "option_c": "Declares a constant variable.",
+        "option_d": "Declares a function."
+      },
+      "correctOption": "option_a",
+      "correctPoint": "5",
+      "negativePoint": "0"
+    },
+    {
+      "question": "Which method is used to remove the first element from an array?",
+      "options": {
+        "option_a": "shift()",
+        "option_b": "unshift()",
+        "option_c": "pop()",
+        "option_d": "push()"
+      },
+      "correctOption": "option_a",
+      "correctPoint": "5",
+      "negativePoint": "0"
+    },
+    {
+      "question": "What is the purpose of the 'map()' method in JavaScript?",
+      "options": {
+        "option_a": "To create a new array by applying a function to each element of an existing array.",
+        "option_b": "To check if an array includes a certain element.",
+        "option_c": "To return the index of the first occurrence of a specified element in an array.",
+        "option_d": "To sort an array."
+      },
+      "correctOption": "option_a",
+      "correctPoint": "5",
+      "negativePoint": "0"
+    },
+    {
+      "question": "What is the correct way to write a single-line comment in JavaScript?",
+      "options": {
+        "option_a": "// This is a comment",
+        "option_b": "# This is a comment",
+        "option_c": "/* This is a comment */",
+        "option_d": "<!-- This is a comment -->"
+      },
+      "correctOption": "option_a",
+      "correctPoint": "5",
+      "negativePoint": "0"
+    },
+    {
+      "question": "Which function is used to find the index of the first occurrence of a value in an array?",
+      "options": {
+        "option_a": "indexOf()",
+        "option_b": "findIndex()",
+        "option_c": "getIndex()",
+        "option_d": "search()"
+      },
+      "correctOption": "option_a",
+      "correctPoint": "5",
+      "negativePoint": "0"
+    }
+  ]
+}
