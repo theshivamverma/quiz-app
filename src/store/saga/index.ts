@@ -3,6 +3,7 @@ import { sagaActions } from "./sagaActions";
 import { Question } from "../../common/types";
 import { updateQuestions } from "../quizSlice";
 import axios from "axios";
+import { updateErrorMsg } from "../errorSlice";
 
 const BACKEND_BASE_URL = "https://quiz-backend.shivamverma9.repl.co";
 
@@ -15,8 +16,8 @@ const apiGetRequest = async ({ path }: ApICallProps) => {
   try {
     const response = await axios(`${BACKEND_BASE_URL}/${path}`);
     return response;
-  } catch (error) {
-    throw new Error("Something went wrong");
+  } catch (error: any) {
+    throw new Error(error.message);
   }
 };
 
@@ -26,8 +27,8 @@ const apiPostRequest = async ({ path, postData }: ApICallProps) => {
       ...postData,
     });
     return response;
-  } catch (error) {
-    throw new Error("Something went wrong");
+  } catch (error: any) {
+    throw new Error(error.message);
   }
 };
 
@@ -44,7 +45,9 @@ export function* setQuizQuestions() {
       }
     });
     yield put(updateQuestions({ questions: data }));
-  } catch (error) {}
+  } catch (error: any) {
+    yield put(updateErrorMsg(error.message))
+  }
 }
 
 export function* submitAnswer(action: any) {
@@ -62,7 +65,9 @@ export function* submitAnswer(action: any) {
         throw new Error("Something went wrong")
       }
     });
-  } catch (error) {}
+  } catch (error: any) {
+    yield put(updateErrorMsg(error.message));
+  }
 }
 
 export function* finishQuiz(action: any) {
@@ -80,8 +85,8 @@ export function* finishQuiz(action: any) {
         throw new Error("Something went wrong")
       }
     })
-  } catch (error) {
-    
+  } catch (error: any) {
+    yield put(updateErrorMsg(error.message));
   }
 }
 

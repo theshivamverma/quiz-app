@@ -7,11 +7,12 @@ const Home: React.FC = () => {
 
   return (
     <Box
-      width="100%"
+      width="47%"
       height="100vh"
       display="flex"
       justifyContent="center"
       alignItems="center"
+      margin="0 auto"
     >
       <Box
         width="100%"

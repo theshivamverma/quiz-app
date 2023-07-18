@@ -88,68 +88,80 @@ const QuizHome: React.FC = () => {
   return (
     <Box width="47%" margin="0 auto" bgcolor="#AF9CF3" height="100%">
       <QuizHeader />
-      <Box
-        borderRadius="3.75rem"
-        bgcolor="white"
-        position="relative"
-        padding={3}
-      >
+      {Object.keys(questions).length > 0 ? (
         <Box
-          width="10rem"
-          height="10rem"
+          borderRadius="3.75rem"
           bgcolor="white"
-          sx={{
-            position: "absolute",
-            top: "-10%",
-            left: "50%",
-            transform: "translateX(-50%)",
-          }}
-          margin="0 auto"
-          borderRadius="50%"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
+          position="relative"
+          padding={3}
         >
-          <h2 className="quiz-question-index">
-            <span className="extrabold-large">{currentQuestionIndex + 1}</span>/
-            {questions && questions.length}
-          </h2>
-        </Box>
-        <Box>
-          {question && (
-            <Typography fontWeight={500} mt={10}>
-              {question}
-            </Typography>
-          )}
-          {options && (
-            <RadioGroup onChange={handleOptionClick} value={selectedOption}>
-              {Object.keys(options).map((optionKey) => (
-                <Box
-                  key={optionKey}
-                  padding={3}
-                  bgcolor="#F3F4FA"
-                  borderRadius="1.25rem"
-                  mt={1}
-                >
-                  <FormControlLabel
-                    value={optionKey}
-                    control={<Radio />}
-                    label={options[optionKey as keyof Question["options"]]}
-                  />
-                </Box>
-              ))}
-            </RadioGroup>
-          )}
-          <button
-            onClick={handleSubmitClick}
-            className={`primaryBtn fullWidthBtn ${selectedOption === "" && "disabled"}`}
-            disabled={selectedOption == ""}
+          <Box
+            width="10rem"
+            height="10rem"
+            bgcolor="white"
+            sx={{
+              position: "absolute",
+              top: "-10%",
+              left: "50%",
+              transform: "translateX(-50%)",
+            }}
+            margin="0 auto"
+            borderRadius="50%"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
           >
-            <span>Next</span>
-            <ArrowForwardIcon />
-          </button>
+            <h2 className="quiz-question-index">
+              <span className="extrabold-large">
+                {currentQuestionIndex + 1}
+              </span>
+              /{questions && questions.length}
+            </h2>
+          </Box>
+          <Box>
+            {question && (
+              <Typography fontWeight={500} mt={10}>
+                {question}
+              </Typography>
+            )}
+            {options && (
+              <RadioGroup onChange={handleOptionClick} value={selectedOption}>
+                {Object.keys(options).map((optionKey) => (
+                  <Box
+                    key={optionKey}
+                    padding={3}
+                    bgcolor="#F3F4FA"
+                    borderRadius="1.25rem"
+                    mt={1}
+                  >
+                    <FormControlLabel
+                      value={optionKey}
+                      control={<Radio />}
+                      label={options[optionKey as keyof Question["options"]]}
+                    />
+                  </Box>
+                ))}
+              </RadioGroup>
+            )}
+            <button
+              onClick={handleSubmitClick}
+              className={`primaryBtn fullWidthBtn ${
+                selectedOption === "" && "disabled"
+              }`}
+              disabled={selectedOption == ""}
+            >
+              <span>Next</span>
+              <ArrowForwardIcon />
+            </button>
+          </Box>
         </Box>
-      </Box>
+      ) : (
+        <Box padding={3} bgcolor="white">
+          <Typography>
+            Questions loading...
+          </Typography>
+        </Box>
+      )}
     </Box>
   );
 };

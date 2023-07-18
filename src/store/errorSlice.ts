@@ -1,13 +1,23 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
-const initialState = {};
+type ErrorState = {
+  errorMessage: string;
+}
+
+const initialState: ErrorState = {
+  errorMessage: ""
+};
 
 export const empSlice = createSlice({
   name: "error",
   initialState,
-  reducers: {}
+  reducers: {
+    updateErrorMsg: (state, action: PayloadAction<string>) => {
+      state.errorMessage = action.payload;
+    }
+  }
 })
 
-export const {} = empSlice.actions;
+export const {updateErrorMsg} = empSlice.actions;
 
 export default empSlice.reducer;

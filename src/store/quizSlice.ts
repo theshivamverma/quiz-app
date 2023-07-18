@@ -57,7 +57,7 @@ export const quizSlice = createSlice({
       state.submittedAnswers = [...state.submittedAnswers, answer];
       if(isAnswerCorrect){
         state.correctAnswers = state.correctAnswers + 1;
-        state.finalScore = state.finalScore + correctPoint;
+        state.finalScore = Number(state.finalScore) + Number(correctPoint);
       }else {
         state.incorrectAnswers = state.incorrectAnswers + 1;
       }

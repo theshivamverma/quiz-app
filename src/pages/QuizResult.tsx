@@ -36,7 +36,7 @@ const QuizResult: React.FC = () => {
   }, [])
 
   return (
-    <Box width="47%" margin="0 auto" bgcolor="#AF9CF3" height="100%">
+    <Box width="47%" margin="0 auto" bgcolor="#AF9CF3" height="inherit">
       <QuizHeader />
       <Box
         borderRadius="3.75rem"
@@ -59,7 +59,7 @@ const QuizResult: React.FC = () => {
             mt={2}
           >
             <Brightness1Icon sx={{ color: "#56CBF9" }} />
-            <Typography margin="1rem" fontWeight={500}>
+            <Typography width={70} margin="1rem" fontWeight={500}>
               {`${finalScore} / ${totalScore}`}
             </Typography>
             <Typography fontWeight={500} sx={{ opacity: "0.5" }}>
@@ -76,7 +76,7 @@ const QuizResult: React.FC = () => {
             mt={2}
           >
             <Brightness1Icon sx={{ color: "#44B77B" }} />
-            <Typography margin="1rem" fontWeight={500}>
+            <Typography width={70} margin="1rem" fontWeight={500}>
               {correctAnswers}
             </Typography>
             <Typography fontWeight={500} sx={{ opacity: "0.5" }}>
@@ -93,7 +93,7 @@ const QuizResult: React.FC = () => {
             mt={2}
           >
             <Brightness1Icon sx={{ color: "#FF3B3F" }} />
-            <Typography margin="1rem" fontWeight={500}>
+            <Typography width={70} margin="1rem" fontWeight={500}>
               {incorrectAnswers}
             </Typography>
             <Typography fontWeight={500} sx={{ opacity: "0.5" }}>
