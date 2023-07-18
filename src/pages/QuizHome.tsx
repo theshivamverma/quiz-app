@@ -25,8 +25,8 @@ const QuizHome: React.FC = () => {
 
   const navigate = useNavigate();
 
-  if(questions.length > 0 && currentQuestionIndex === questions.length){
-    navigate("/quiz-result")
+  if (questions.length > 0 && currentQuestionIndex === questions.length) {
+    navigate("/quiz-result");
   }
 
   const currentQuestion = questions[currentQuestionIndex];
@@ -45,15 +45,15 @@ const QuizHome: React.FC = () => {
     }
   }, []);
 
-  let timer: number;
+  let interval: number;
 
   React.useEffect(() => {
-    timer = setInterval(() => {
+    interval = setInterval(() => {
       setSecondsToAnswer((prevSeconds) => prevSeconds + 1);
     }, 1000);
 
     return () => {
-      clearInterval(timer);
+      clearInterval(interval);
       setSecondsToAnswer(0);
     };
   }, []);
@@ -70,7 +70,19 @@ const QuizHome: React.FC = () => {
         correctPoint,
       })
     );
-    clearInterval(timer);
+    dispatch({
+      type: sagaActions.SUBMIT_ANSWER,
+      payload: {
+        questionDetails: {
+          questionId: 1,
+          quizId: 2,
+          selectedAnswer: selectedOption,
+          timeTaken: secondsToAnswer,
+          correctStatus: selectedOption === correctOption
+        }
+      }
+    })
+    clearInterval(interval);
   };
 
   return (
@@ -79,7 +91,6 @@ const QuizHome: React.FC = () => {
       <Box
         borderRadius="3.75rem"
         bgcolor="white"
-        height="100%"
         position="relative"
         padding={3}
       >
@@ -131,7 +142,7 @@ const QuizHome: React.FC = () => {
           )}
           <button
             onClick={handleSubmitClick}
-            className="primaryBtn fullWidthBtn"
+            className={`primaryBtn fullWidthBtn ${selectedOption === "" && "disabled"}`}
             disabled={selectedOption == ""}
           >
             <span>Next</span>

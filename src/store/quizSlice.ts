@@ -10,6 +10,7 @@ type QuizState = {
   currentQuestionIndex: number;
   selectedOption: string;
   submittedAnswers: string[];
+  totalScore: number;
 };
 
 const initialState: QuizState = {
@@ -21,6 +22,7 @@ const initialState: QuizState = {
   currentQuestionIndex: 0,
   selectedOption: "",
   submittedAnswers: [],
+  totalScore: 50,
 };
 
 export const quizSlice = createSlice({
@@ -29,6 +31,14 @@ export const quizSlice = createSlice({
   reducers: {
     updateQuizStartStatus: (state, action: PayloadAction<boolean>) => {
       state.quizStarted = action.payload;
+      if(action.payload) {
+        state.currentQuestionIndex = 0;
+        state.correctAnswers = 0;
+        state.incorrectAnswers = 0;
+        state.selectedOption = "";
+        state.finalScore = 0;
+        state.submittedAnswers = []
+      }
     },
     updateQuestions: (
       state,
