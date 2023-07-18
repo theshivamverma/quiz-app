@@ -31,6 +31,7 @@ export const quizSlice = createSlice({
   reducers: {
     updateQuizStartStatus: (state, action: PayloadAction<boolean>) => {
       state.quizStarted = action.payload;
+      // reset state varaibles when quiz started
       if(action.payload) {
         state.currentQuestionIndex = 0;
         state.correctAnswers = 0;
@@ -40,15 +41,19 @@ export const quizSlice = createSlice({
         state.submittedAnswers = []
       }
     },
+    // set quiz questions from API response
     updateQuestions: (
       state,
       action: PayloadAction<{ questions: Question[] }>
     ) => {
       state.questions = [...action.payload.questions];
     },
+    // selected option change handler
     updateSelectedOption: (state, action: PayloadAction<string>) => {
       state.selectedOption = action.payload;
     },
+    // question submit handler
+    // scoring logic
     updateSubmittedAnswers: (
       state,
       action: PayloadAction<{ answer: string; isAnswerCorrect: boolean; correctPoint: number }>

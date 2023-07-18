@@ -12,6 +12,7 @@ type ApICallProps = {
   postData?: Record<string, string | number>;
 };
 
+// api helper to make get requests
 const apiGetRequest = async ({ path }: ApICallProps) => {
   try {
     const response = await axios(`${BACKEND_BASE_URL}/${path}`);
@@ -21,6 +22,7 @@ const apiGetRequest = async ({ path }: ApICallProps) => {
   }
 };
 
+// api helper to make post requests
 const apiPostRequest = async ({ path, postData }: ApICallProps) => {
   try {
     const response = await axios.post(`${BACKEND_BASE_URL}/${path}`, {
@@ -32,6 +34,7 @@ const apiPostRequest = async ({ path, postData }: ApICallProps) => {
   }
 };
 
+// fetches questions for quiz
 export function* setQuizQuestions() {
   try {
     const data: Question[] = yield call(async () => {
@@ -50,8 +53,11 @@ export function* setQuizQuestions() {
   }
 }
 
+// submit question response after button click
 export function* submitAnswer(action: any) {
   try {
+    // @ts-ignore
+    // static data returned as of now, once API returns actual data, this can be used to set states accordingly
     const data: Record<string, string | number> = yield call(async () => {
       const { data: result, status } = await apiPostRequest({
         path: "submit-answer",
@@ -65,26 +71,31 @@ export function* submitAnswer(action: any) {
         throw new Error("Something went wrong")
       }
     });
+    // set state logic based on API data goes here, setting state from reducers for now
   } catch (error: any) {
     yield put(updateErrorMsg(error.message));
   }
 }
 
+// runs after quiz is finished
 export function* finishQuiz(action: any) {
   try {
+    // @ts-ignore
+    // static data returned as of now, once API returns actual data, this can be used to set states accordingly
     const data: Record<string, string | number> = yield call(async () => {
-      const {data: result, status} = await apiPostRequest({
+      const { data: result, status } = await apiPostRequest({
         path: "finish-quiz",
         postData: {
-          ...action.payload.quizDetails
-        }
-      })
-      if(status === 200){
+          ...action.payload.quizDetails,
+        },
+      });
+      if (status === 200) {
         return result;
-      }else {
-        throw new Error("Something went wrong")
+      } else {
+        throw new Error("Something went wrong");
       }
-    })
+    });
+    // set state logic based on API data goes here, setting state from reducers for now
   } catch (error: any) {
     yield put(updateErrorMsg(error.message));
   }

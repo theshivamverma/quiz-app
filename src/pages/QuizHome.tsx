@@ -25,10 +25,12 @@ const QuizHome: React.FC = () => {
 
   const navigate = useNavigate();
 
+  // navigate to result page when last question submitted
   if (questions.length > 0 && currentQuestionIndex === questions.length) {
     navigate("/quiz-result");
   }
 
+  // get current question based on index
   const currentQuestion = questions[currentQuestionIndex];
 
   const { question, options, correctOption, correctPoint } =
@@ -36,15 +38,10 @@ const QuizHome: React.FC = () => {
 
   const dispatch = useAppDispatch();
 
+  // to store time taken to answer question
   const [secondsToAnswer, setSecondsToAnswer] = useState<number>(0);
 
-  React.useEffect(() => {
-    dispatch(updateQuizStartStatus(true));
-    if (questions.length === 0) {
-      dispatch({ type: sagaActions.SET_QUIZ_DATA });
-    }
-  }, []);
-
+  // logic to count seconds from when question is loaded until answered
   let interval: number;
 
   React.useEffect(() => {
@@ -58,11 +55,20 @@ const QuizHome: React.FC = () => {
     };
   }, []);
 
+  // fetch quiz questions
+  React.useEffect(() => {
+    dispatch(updateQuizStartStatus(true));
+    if (questions.length === 0) {
+      dispatch({ type: sagaActions.SET_QUIZ_DATA });
+    }
+  }, []);
+
   const handleOptionClick = (e: any) => {
     dispatch(updateSelectedOption(e.target.value));
   };
 
   const handleSubmitClick = () => {
+    // update state to submit response
     dispatch(
       updateSubmittedAnswers({
         answer: selectedOption,
@@ -70,6 +76,7 @@ const QuizHome: React.FC = () => {
         correctPoint,
       })
     );
+    // makes api request to submit response
     dispatch({
       type: sagaActions.SUBMIT_ANSWER,
       payload: {
@@ -82,6 +89,7 @@ const QuizHome: React.FC = () => {
         }
       }
     })
+    // clear interval once submit clicked
     clearInterval(interval);
   };
 
