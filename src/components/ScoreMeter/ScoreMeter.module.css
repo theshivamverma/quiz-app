@@ -1,0 +1,57 @@
+.meterContainer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.meterImg, .dialImg, .pointerImg {
+  width: 100%;
+  height: 100%;
+}
+
+.meterImg {
+  position: absolute;
+  z-index: 9;
+}
+
+.dialImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.pointerImg {
+  position: absolute;
+  top: 15%;
+}
+
+.meterImg > img, 
+.dialImg > img,
+.pointerImg > img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.pointerImg > img {
+  width: 100%;
+  height: 70%;
+}
+
+.percent {
+  width: 150px;
+  height: 150px;
+  background-color: white;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.percent > h2 {
+  font-size: 2rem;
+}

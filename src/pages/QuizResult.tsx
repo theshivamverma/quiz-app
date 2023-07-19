@@ -1,11 +1,12 @@
 import { Box, Typography } from "@mui/material";
 import Brightness1Icon from "@mui/icons-material/Brightness1";
 import React from "react";
-import { QuizHeader } from "../components";
+import { QuizHeader, ScoreMeter } from "../components";
 import { useAppDispatch, useAppSelector } from "../common/hooks";
 import { updateQuizStartStatus } from "../store/quizSlice";
 import { useNavigate } from "react-router";
 import { sagaActions } from "../store/saga/sagaActions";
+import { calculatePercentage } from "../common/utils";
 
 const QuizResult: React.FC = () => {
   const {
@@ -35,6 +36,8 @@ const QuizResult: React.FC = () => {
     })
   }, [])
 
+  const percent = calculatePercentage(finalScore, totalScore)
+
   return (
     <Box width="47%" margin="0 auto" bgcolor="#AF9CF3" height="inherit">
       <QuizHeader />
@@ -48,8 +51,11 @@ const QuizResult: React.FC = () => {
         <Typography fontSize={25} fontWeight={700} textAlign="center">
           Your result
         </Typography>
-        <Box>
-          <Box
+        <Box width="35%" height={200} margin="0 auto">
+          <ScoreMeter percent={percent} />
+        </Box>
+        <Box mt={4}>
+          {/* <Box
             height="80px"
             display="flex"
             alignItems="center"
@@ -65,7 +71,7 @@ const QuizResult: React.FC = () => {
             <Typography fontWeight={500} sx={{ opacity: "0.5" }}>
               Score
             </Typography>
-          </Box>
+          </Box> */}
           <Box
             height="80px"
             display="flex"

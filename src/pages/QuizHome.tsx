@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../common/hooks";
 import {
   updateQuizStartStatus,
@@ -85,10 +85,10 @@ const QuizHome: React.FC = () => {
           quizId: 2,
           selectedAnswer: selectedOption,
           timeTaken: secondsToAnswer,
-          correctStatus: selectedOption === correctOption
-        }
-      }
-    })
+          correctStatus: selectedOption === correctOption,
+        },
+      },
+    });
     // clear interval once submit clicked
     clearInterval(interval);
   };
@@ -165,9 +165,7 @@ const QuizHome: React.FC = () => {
         </Box>
       ) : (
         <Box padding={3} bgcolor="white">
-          <Typography>
-            Questions loading...
-          </Typography>
+          <Typography>Questions loading...</Typography>
         </Box>
       )}
     </Box>
