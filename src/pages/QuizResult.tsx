@@ -55,23 +55,6 @@ const QuizResult: React.FC = () => {
           <ScoreMeter percent={percent} />
         </Box>
         <Box mt={4}>
-          {/* <Box
-            height="80px"
-            display="flex"
-            alignItems="center"
-            sx={{ background: "rgba(86, 203, 249, 0.2)" }}
-            padding={3}
-            borderRadius={3}
-            mt={2}
-          >
-            <Brightness1Icon sx={{ color: "#56CBF9" }} />
-            <Typography width={70} margin="1rem" fontWeight={500}>
-              {`${finalScore} / ${totalScore}`}
-            </Typography>
-            <Typography fontWeight={500} sx={{ opacity: "0.5" }}>
-              Score
-            </Typography>
-          </Box> */}
           <Box
             height="80px"
             display="flex"
